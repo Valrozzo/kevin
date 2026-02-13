@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Kevin ❤️ ¿Quieres ser mi San Valentín?</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    /* Corazones flotando */
+    .hearts span {
+      position: fixed;
+      font-size: 22px;
+      color: #ff4d6d;
+      animation: flotar 6s linear infinite;
+    }
+
+    @keyframes flotar {
+      0% { transform: translateY(100vh); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-10vh); opacity: 0; }
+    }
+
+    .card {
+      background: white;
+      border-radius: 25px;
+      padding: 30px;
+      width: 360px;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+      animation: aparecer 1.5s ease;
+      position: relative;
+      z-index: 2;
+    }
+
+    @keyframes aparecer {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    h1 {
+      color: #e63946;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #555;
+      font-size: 16px;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 18px;
+      margin: 15px 0;
+    }
+
+    h2 {
+      color: #e63946;
+    }
+
+    .buttons {
+      margin-top: 25px;
+      height: 70px;
+      position: relative;
+    }
+
+    button {
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease;
+      position: absolute;
+    }
+
+    #yesBtn {
+      background: #e63946;
+      color: white;
+      left: 40px;
+    }
+
+    #noBtn {
+      background: #adb5bd;
+      color: white;
+      right: 40px;
+    }
+
+    #yesBtn:hover {
+      background: #ff4d6d;
+    }
+
+    /* MODAL ROMÁNTICO */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      z-index: 999;
+    }
+
+    .modal.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 30px;
+      width: 340px;
+      border-radius: 25px;
+      text-align: center;
+      animation: zoom 0.5s ease;
+    }
+
+    @keyframes zoom {
+      from { transform: scale(0.7); }
+      to { transform: scale(1); }
+    }
+
+    .modal-content h1 {
+      color: #e63946;
+    }
+
+    .modal-content p {
+      color: #555;
+      margin: 15px 0;
+    }
+
+    .modal-img {
+      width: 100%;
+      border-radius: 18px;
+      margin: 15px 0;
+    }
+
+    .modal-content button {
+      background: #e63946;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 30px;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .modal-content button:hover {
+      background: #ff4d6d;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Corazones -->
+  <div class="hearts">
+    <span style="left:10%">❤️</span>
+    <span style="left:30%">💖</span>
+    <span style="left:50%">💕</span>
+    <span style="left:70%">💘</span>
+    <span style="left:90%">❤️</span>
+  </div>
+
+  <!-- Tarjeta principal -->
+  <div class="card">
+    <h1>Kevin ❤️</h1>
+
+    <p>
+      Desde que llegaste a mi vida,  
+      mis días son más bonitos  
+      y mi corazón sonríe contigo.
+    </p>
+
+    <img src="fav1.jpeg">
+
+    <p>
+      No necesito una fecha para amarte,  
+      pero sí una excusa perfecta para preguntarte…
+    </p>
+
+    <h2>¿Quieres ser mi San Valentín? 💘</h2>
+
+    <div class="buttons">
+      <button id="yesBtn" onclick="mostrarModal()">Sí ❤️</button>
+      <button id="noBtn" onmouseover="moverBoton()">No 😅</button>
+    </div>
+  </div>
+
+  <!-- Modal romántico -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <h1>💘 Kevin 💘</h1>
+
+      <p>
+        Gracias por decir que sí 💕<br>
+        Prometo llenarte de amor, risas  
+        y momentos inolvidables.
+      </p>
+
+      <img src="fav2.jpeg"
+           class="modal-img">
+
+      <h2>💖 Feliz San Valentín 💖</h2>
+
+      <button onclick="cerrarModal()">Cerrar ❤️</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    let escalaSi = 1;
+
+    function moverBoton() {
+      const noBtn = document.getElementById("noBtn");
+      const yesBtn = document.getElementById("yesBtn");
+
+      const btnWidth = noBtn.offsetWidth;
+      const btnHeight = noBtn.offsetHeight;
+
+      const padding = 20;
+
+      const maxX = window.innerWidth - btnWidth - padding;
+      const maxY = window.innerHeight - btnHeight - padding;
+
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+
+      noBtn.style.position = "fixed";
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+
+      escalaSi += 0.15;
+      yesBtn.style.transform = `scale(${escalaSi})`;
+    }
+
+    function mostrarModal() {
+      document.getElementById("modal").classList.add("show");
+    }
+
+    function cerrarModal() {
+      document.getElementById("modal").classList.remove("show");
+    }
+  </script>
+
+</body>
+</html>
