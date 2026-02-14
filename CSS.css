@@ -1,0 +1,159 @@
+ <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    /* Corazones flotando */
+    .hearts span {
+      position: fixed;
+      font-size: 22px;
+      color: #ff4d6d;
+      animation: flotar 6s linear infinite;
+    }
+
+    @keyframes flotar {
+      0% { transform: translateY(100vh); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-10vh); opacity: 0; }
+    }
+
+    .card {
+      background: white;
+      border-radius: 25px;
+      padding: 30px;
+      width: 360px;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+      animation: aparecer 1.5s ease;
+      position: relative;
+      z-index: 2;
+    }
+
+    @keyframes aparecer {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    h1 {
+      color: #e63946;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #555;
+      font-size: 16px;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 18px;
+      margin: 15px 0;
+    }
+
+    h2 {
+      color: #e63946;
+    }
+
+    .buttons {
+      margin-top: 25px;
+      height: 70px;
+      position: relative;
+    }
+
+    button {
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease;
+      position: absolute;
+    }
+
+    #yesBtn {
+      background: #e63946;
+      color: white;
+      left: 40px;
+    }
+
+    #noBtn {
+      background: #adb5bd;
+      color: white;
+      right: 40px;
+    }
+
+    #yesBtn:hover {
+      background: #ff4d6d;
+    }
+
+    /* MODAL ROMÁNTICO */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      z-index: 999;
+    }
+
+    .modal.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 30px;
+      width: 340px;
+      border-radius: 25px;
+      text-align: center;
+      animation: zoom 0.5s ease;
+    }
+
+    @keyframes zoom {
+      from { transform: scale(0.7); }
+      to { transform: scale(1); }
+    }
+
+    .modal-content h1 {
+      color: #e63946;
+    }
+
+    .modal-content p {
+      color: #555;
+      margin: 15px 0;
+    }
+
+    .modal-img {
+      width: 100%;
+      border-radius: 18px;
+      margin: 15px 0;
+    }
+
+    .modal-content button {
+      background: #e63946;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 30px;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .modal-content button:hover {
+      background: #ff4d6d;
+    }
+  </style>
+</head>
+<body>
